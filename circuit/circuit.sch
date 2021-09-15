@@ -25,17 +25,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 4200 2450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_POT_US RV_HYSTERESIS
-U 1 1 61420C5A
-P 3700 1700
-F 0 "RV_HYSTERESIS" V 3495 1700 50  0000 C CNN
-F 1 "200K" V 3586 1700 50  0000 C CNN
-F 2 "" H 3700 1700 50  0001 C CNN
-F 3 "~" H 3700 1700 50  0001 C CNN
-	1    3700 1700
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:R_POT_US RV_THRESHOLD
 U 1 1 61422150
 P 2950 1700
@@ -46,8 +35,6 @@ F 3 "~" H 2950 1700 50  0001 C CNN
 	1    2950 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3100 1700 3550 1700
 $Comp
 L power:+5V #PWR?
 U 1 1 61423494
@@ -75,13 +62,9 @@ Wire Wire Line
 Wire Wire Line
 	2950 1400 2950 1550
 Wire Wire Line
-	3850 1700 4550 1700
-Wire Wire Line
 	4550 1700 4550 2250
 Wire Wire Line
 	4550 2250 4450 2250
-Wire Wire Line
-	3700 1850 3700 2150
 Wire Wire Line
 	3700 2150 3850 2150
 $Comp
@@ -204,4 +187,39 @@ Connection ~ 4950 2250
 Wire Wire Line
 	3850 2350 3750 2350
 Connection ~ 3750 2350
+$Comp
+L Device:R_US R?
+U 1 1 61440E5A
+P 3900 1700
+F 0 "R?" V 4105 1700 50  0000 C CNN
+F 1 "18K" V 4014 1700 50  0000 C CNN
+F 2 "" V 3940 1690 50  0001 C CNN
+F 3 "~" H 3900 1700 50  0001 C CNN
+	1    3900 1700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3700 1700 3700 2150
+$Comp
+L Device:R_US R?
+U 1 1 6144199F
+P 3500 1700
+F 0 "R?" V 3705 1700 50  0000 C CNN
+F 1 "1K" V 3614 1700 50  0000 C CNN
+F 2 "" V 3540 1690 50  0001 C CNN
+F 3 "~" H 3500 1700 50  0001 C CNN
+	1    3500 1700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3650 1700 3700 1700
+Wire Wire Line
+	3700 1700 3750 1700
+Connection ~ 3700 1700
+Wire Wire Line
+	4050 1700 4550 1700
+Wire Wire Line
+	3350 1700 3100 1700
+Text Notes 3450 1400 0    50   ~ 0
+A ratio of 1/18 here gives 0.28 volts of hysteresis on the comparison.
 $EndSCHEMATC
