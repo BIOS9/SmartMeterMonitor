@@ -2,21 +2,23 @@
 #include "OTA.h"
 #include "PrometheusExporter.h"
 
-#define IMPULSE_PIN 34
+#define IMPULSE_PIN 27
 #define LED_PIN 32
 
 Network network;
 OTA ota;
 PrometheusExporter exporter;
 
-int impulseCount = 0;
+unsigned int impulseCount = 0;
 unsigned long led_time = 0;
 
 void IRAM_ATTR impulse() {
-  ++impulseCount;
-  exporter.setImpulses(impulseCount);
-  digitalWrite(LED_PIN, HIGH);
-  led_time = millis();
+  if(digitalRead(IMPULSE_PIN) == LOW) {
+    ++impulseCount;
+    exporter.setImpulses(impulseCount);
+    digitalWrite(LED_PIN, HIGH);
+    led_time = millis();
+  }
 }
 
 void setup() {
@@ -25,8 +27,8 @@ void setup() {
   ota.init();
   exporter.init();
   pinMode(LED_PIN, OUTPUT);
-  pinMode(IMPULSE_PIN, INPUT);
-  attachInterrupt(IMPULSE_PIN, impulse, CHANGE);
+  pinMode(IMPULSE_PIN, INPUT_PULLUP);
+  attachInterrupt(IMPULSE_PIN, impulse, FALLING);
 }
 
 void loop() {
