@@ -27,7 +27,7 @@ void PrometheusExporter::process() {
                         if (header.indexOf("GET /metrics") >= 0) {
                             // write metric
                             client.println("HTTP/1.1 200 OK");
-                            client.println("Content-Type: text/html; charset=utf-8");
+                            client.println("Content-Type: text/plain; charset=utf-8");
                             client.println("Connection: close");
                             client.println(); // end headers
                             sendMetrics(client);
