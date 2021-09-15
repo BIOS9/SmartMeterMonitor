@@ -8,7 +8,7 @@ void PrometheusExporter::init() {
     Serial.println("Exporter running.");
 }
 
-void PrometheusExporter::setImpulses(int impulses) {
+void PrometheusExporter::setImpulses(unsigned int impulses) {
   this->impulses = impulses;
 }
 

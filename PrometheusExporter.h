@@ -10,7 +10,7 @@ class PrometheusExporter {
     public:
         void init();
         void process();
-        void setImpulses(int impulses);
+        void setImpulses(unsigned int impulses);
     private:
         String header;
         int impulses = 0;
